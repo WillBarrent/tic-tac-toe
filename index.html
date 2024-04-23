@@ -1,13 +1,45 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
-    <link rel="stylesheet" href="style.css">
-</head>
-<body>
-    
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <div class="game">
+      <div class="game-start">
+        <form class="game-initial">
+          <input
+            type="text"
+            class="player-one-name"
+            placeholder="First player"
+            required
+          />
+          <input
+            type="text"
+            class="player-two-name"
+            placeholder="Second player"
+            required
+          />
+
+          <button class="initialization">New game!</button>
+
+          <div class="warn">
+            If you restart the page, you will lost all data.
+          </div>
+        </form>
+      </div>
+
+      <div class="gameboard hidden"></div>
+    </div>
+
     <script src="index.js"></script>
-</body>
+  </body>
 </html>

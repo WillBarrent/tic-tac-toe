@@ -149,7 +149,7 @@ function gameInteractive(gameBoardArray) {
     let div = document.createElement('div');
     div.className = 'game-end';
     div.innerHTML = `
-      <div class="win-or-lose">Winner is: ${winner}</div>
+      <div class="win-or-lose">Winner is: ${winner == 'Draw!' ? 'No one!' : winner}</div>
       <div>Refresh the page for restart the game!</div>
     `;
     game.appendChild(div);
@@ -181,21 +181,26 @@ function gameInteractive(gameBoardArray) {
     let order = true;
     let theEnd = false;
 
+    let counter = 0;
+
     gameBoard.addEventListener("click", function (e) {
       let cell = e.target;
 
       if (!classContain(cell, "cellIsCount") && !theEnd) {
+        counter += 1;
         cell.textContent = order ? X : O;
         classAdd(cell, order ? "cell-x" : "cell-o");
         classAdd(cell, "cellIsCount");
         order = !order;
-        const DOMGameBoard = document.querySelectorAll('.gameboard > .cell');
+        DOMGameBoard = document.querySelectorAll('.gameboard > .cell');
         let checkForWinner = checkWinner(createArrayFromGameBoard(DOMGameBoard));
         if (checkForWinner.find(cell => cell === X || cell === O)) {
           let XWin = checkForWinner.find(cell => cell === X);
           displayWinner(XWin ? document.querySelector('.player-one').textContent : document.querySelector('.player-two').textContent);
-
           theEnd = true;
+        }
+        else if (counter == 9) {
+          displayWinner('Draw!');
         }
       }
     });
